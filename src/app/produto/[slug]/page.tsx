@@ -6,12 +6,15 @@ import { CHILD_GALLERY, TAG_LABELS } from "@/lib/constants";
 import { formatParcelamento, formatPriceBRL } from "@/lib/format";
 import { getProductBySlug } from "@/lib/products";
 
+export const dynamic = "force-dynamic";
+
 type ProdutoPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export default async function ProdutoPage({ params }: ProdutoPageProps) {
-  const product = await getProductBySlug(params.slug);
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
 
   if (!product || !product.ativo) {
     notFound();

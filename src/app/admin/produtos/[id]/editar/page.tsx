@@ -6,14 +6,15 @@ import { TAG_LABELS } from "@/lib/constants";
 import { getProductById } from "@/lib/products";
 
 type EditarProdutoPageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default async function EditarProdutoPage({
   params,
 }: EditarProdutoPageProps) {
   await requireAdmin();
-  const product = await getProductById(params.id);
+  const { id } = await params;
+  const product = await getProductById(id);
 
   if (!product) {
     notFound();

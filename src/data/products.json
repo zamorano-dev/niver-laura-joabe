@@ -1,13 +1,16 @@
 [
   {
     "id": "aa2f5d33-9af1-4e4b-a32a-b2aa3759cbab",
-    "nome": "test",
-    "slug": "test",
-    "descricao": "teste",
+    "nome": "Toy To Enjoy Brinquedos de construção – brinquedo de escavadeira e caminhão basculante para crianças (conjunto de 2) – garra móvel e levantamento de volta – caminhão de lixo e escavadeira – veículos",
+    "slug": "toy-to-enjoy-brinquedos-de-construcao-brinquedo-de-escavadeira-e-caminhao-basculante-para-criancas-conjunto-de-2-garra-movel-e-levantamento-de-volta-caminhao-de-lixo-e-escavadeira-veiculos",
+    "descricao": "Edition: Conjunto de escavadeira e caminhão basculante\r\nCONJUNTO DE 2: Duplique a diversão! Nosso conjunto de brinquedos de caminhão de construção vem com um caminhão escavadeira e um caminhão basculante. A escavadeira pode ser usada para cavar grandes pedaços de terra e o caminhão basculante pode ser usado para transportar areia, cascalho e até mesmo pequenos brinquedos de um lugar para outro.\r\nEstrutura de qualidade premium: Feito de plástico ABS de qualidade premium, os caminhões de brinquedo de construção podem suportar uso intenso e vários solavancos na parede. O plástico e a tinta usados são 100% atóxicos, o que garante uma brincadeira segura. Não há bordas afiadas ou cantos que possam machucar seu filho. Idade recomendada: 3 ou mais\r\nPeças móveis realistas: o brinquedo da escavadeira pode se mover 360 graus e o braço da pá tem uma alça operacional. A parte traseira do caminhão basculante levanta com o pressionar de um botão. As peças móveis realistas aumentam seus detalhes e mantêm seu filho envolvido em brincar com o caminhão por horas.\r\nUm presente que não pode perder: Quer dar ao seu filho o que ele vai adorar brincar por horas? Nosso conjunto de veículos de construção é um excelente presente para seu filho em aniversários, Natal, férias de verão ou qualquer outra ocasião. Também pode ser dado como recompensa para o seu filho por suas pequenas conquistas.\r\nNão é apenas um brinquedo: brincar com estes brinquedos de caminhão proporcionará ao seu filho horas de brincadeiras imaginativas. Ajuda a promover a coordenação olho-mão, capacidade cognitiva e habilidades motoras. Seu filho passará mais horas ativo e ao ar livre do que jogando videogames.",
     "preco": 200,
-    "tagCrianca": "LAURA_LUDOVICA",
+    "tagCrianca": "JOABE_LINCOLN",
     "imagens": [
-      "https://m.media-amazon.com/images/I/916WOYinv3L._AC_SX679_.jpg"
+      "https://m.media-amazon.com/images/I/916WOYinv3L._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/916WOYinv3L._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/81xtcmlz10L._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/81UBmyIPCtL._AC_SX679_.jpg"
     ],
     "paymentLink": "https://mpago.la/1bzJzRa",
     "ativo": true

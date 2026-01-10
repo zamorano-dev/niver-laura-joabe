@@ -2,11 +2,14 @@ import Link from "next/link";
 import { TAG_LABELS } from "@/lib/constants";
 
 type ConfirmacaoPageProps = {
-  searchParams?: { paid?: string };
+  searchParams?: Promise<{ paid?: string }>;
 };
 
-export default function ConfirmacaoPage({ searchParams }: ConfirmacaoPageProps) {
-  const paid = searchParams?.paid === "true";
+export default async function ConfirmacaoPage({
+  searchParams,
+}: ConfirmacaoPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const paid = resolvedSearchParams?.paid === "true";
 
   return (
     <div className="page">

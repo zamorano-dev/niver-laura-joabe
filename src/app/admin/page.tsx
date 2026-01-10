@@ -6,18 +6,19 @@ import { getProducts } from "@/lib/products";
 import { deleteProductAction, loginAction, logoutAction } from "./actions";
 
 type AdminPageProps = {
-  searchParams?: { error?: string };
+  searchParams?: Promise<{ error?: string }>;
 };
 
 export default async function AdminPage({ searchParams }: AdminPageProps) {
   const isAuthenticated = await isAdminAuthenticated();
+  const resolvedSearchParams = await searchParams;
   const missingCredentials = !process.env.ADMIN_CPF || !process.env.ADMIN_PASSWORD;
 
   if (!isAuthenticated) {
     const errorMessage =
-      searchParams?.error === "invalid"
+      resolvedSearchParams?.error === "invalid"
         ? "CPF ou senha inválidos."
-        : searchParams?.error === "missing"
+        : resolvedSearchParams?.error === "missing"
           ? "Preencha CPF e senha."
           : null;
 
