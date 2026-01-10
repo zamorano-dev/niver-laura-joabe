@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import { CHILD_GALLERY, TAG_LABELS } from "@/lib/constants";
 import { formatParcelamento, formatPriceBRL } from "@/lib/format";
 import { getProductBySlug } from "@/lib/products";
@@ -45,12 +46,8 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
           <div className="gallery">
             <div>
               <h2 className="section-title">Fotos do produto</h2>
-              <div className="gallery-grid">
-                {productImages.map((image) => (
-                  <div key={image} className="gallery-item">
-                    <img src={image} alt={product.nome} width={260} height={200} />
-                  </div>
-                ))}
+              <div className="gallery-item">
+                <ImageCarousel images={productImages} alt={product.nome} />
               </div>
             </div>
 

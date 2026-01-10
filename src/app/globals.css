@@ -207,7 +207,7 @@ p {
   padding: 16px;
   display: grid;
   place-items: center;
-  min-height: 180px;
+  min-height: 220px;
 }
 
 .product-title {
@@ -311,6 +311,86 @@ p {
   place-items: center;
   min-height: 180px;
   border: 1px solid rgba(16, 34, 53, 0.08);
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.carousel--compact .carousel-slide img {
+  max-height: 210px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(16, 34, 53, 0.8);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.carousel-btn-prev {
+  left: 10px;
+}
+
+.carousel-btn-next {
+  right: 10px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(16, 34, 53, 0.2);
+  cursor: pointer;
+  transition: width 0.2s ease, background 0.2s ease;
+}
+
+.carousel-dot.is-active {
+  width: 20px;
+  background: var(--brand-500);
 }
 
 .product-details {

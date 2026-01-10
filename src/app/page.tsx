@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import { getActiveProducts } from "@/lib/products";
 import { TAG_LABELS } from "@/lib/constants";
 import { formatParcelamento, formatPriceBRL } from "@/lib/format";
@@ -54,11 +53,10 @@ export default async function Home() {
                 style={{ "--delay": `${index * 80}ms` } as CSSProperties}
               >
                 <div className="product-image">
-                  <img
-                    src={product.imagens[0] || "/images/produto-casinha.svg"}
+                  <ImageCarousel
+                    images={product.imagens}
                     alt={product.nome}
-                    width={260}
-                    height={200}
+                    className="carousel--compact"
                   />
                 </div>
                 <div className="product-meta">
