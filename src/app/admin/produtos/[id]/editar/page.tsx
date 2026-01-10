@@ -12,7 +12,7 @@ type EditarProdutoPageProps = {
 export default async function EditarProdutoPage({
   params,
 }: EditarProdutoPageProps) {
-  requireAdmin();
+  await requireAdmin();
   const product = await getProductById(params.id);
 
   if (!product) {

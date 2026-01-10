@@ -1,5 +1,18 @@
 [
   {
+    "id": "aa2f5d33-9af1-4e4b-a32a-b2aa3759cbab",
+    "nome": "test",
+    "slug": "test",
+    "descricao": "teste",
+    "preco": 200,
+    "tagCrianca": "LAURA_LUDOVICA",
+    "imagens": [
+      "https://m.media-amazon.com/images/I/916WOYinv3L._AC_SX679_.jpg"
+    ],
+    "paymentLink": "https://mpago.la/1bzJzRa",
+    "ativo": true
+  },
+  {
     "id": "seed-1",
     "nome": "Mini cozinha sensorial da Laura",
     "slug": "mini-cozinha-sensorial-da-laura",

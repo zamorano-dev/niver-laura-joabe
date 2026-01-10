@@ -10,7 +10,7 @@ type AdminPageProps = {
 };
 
 export default async function AdminPage({ searchParams }: AdminPageProps) {
-  const isAuthenticated = isAdminAuthenticated();
+  const isAuthenticated = await isAdminAuthenticated();
   const missingCredentials = !process.env.ADMIN_CPF || !process.env.ADMIN_PASSWORD;
 
   if (!isAuthenticated) {

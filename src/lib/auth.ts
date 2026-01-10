@@ -70,20 +70,23 @@ function isValidSession(value: string) {
   return crypto.timingSafeEqual(left, right);
 }
 
-export function createAdminSession(cpf: string) {
-  cookies().set(COOKIE_NAME, signSession(normalizeCpf(cpf)), {
+export async function createAdminSession(cpf: string) {
+  const cookieStore = await cookies();
+  cookieStore.set(COOKIE_NAME, signSession(normalizeCpf(cpf)), {
     httpOnly: true,
     sameSite: "lax",
     path: "/",
   });
 }
 
-export function clearAdminSession() {
-  cookies().delete(COOKIE_NAME);
+export async function clearAdminSession() {
+  const cookieStore = await cookies();
+  cookieStore.delete(COOKIE_NAME);
 }
 
-export function isAdminAuthenticated() {
-  const session = cookies().get(COOKIE_NAME)?.value;
+export async function isAdminAuthenticated() {
+  const cookieStore = await cookies();
+  const session = cookieStore.get(COOKIE_NAME)?.value;
   if (!session) {
     return false;
   }
@@ -91,8 +94,8 @@ export function isAdminAuthenticated() {
   return isValidSession(session);
 }
 
-export function requireAdmin() {
-  if (!isAdminAuthenticated()) {
+export async function requireAdmin() {
+  if (!(await isAdminAuthenticated())) {
     redirect("/admin");
   }
 }

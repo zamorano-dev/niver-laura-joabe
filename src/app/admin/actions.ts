@@ -26,31 +26,31 @@ export async function loginAction(formData: FormData) {
     redirect("/admin?error=invalid");
   }
 
-  createAdminSession(cpf);
+  await createAdminSession(cpf);
   redirect("/admin");
 }
 
 export async function logoutAction() {
-  clearAdminSession();
+  await clearAdminSession();
   redirect("/admin");
 }
 
 export async function createProductAction(formData: FormData) {
-  requireAdmin();
+  await requireAdmin();
   const input = parseProductFormData(formData);
   await createProduct(input);
   redirect("/admin");
 }
 
 export async function updateProductAction(id: string, formData: FormData) {
-  requireAdmin();
+  await requireAdmin();
   const input = parseProductFormData(formData);
   await updateProduct(id, input);
   redirect("/admin");
 }
 
 export async function deleteProductAction(id: string) {
-  requireAdmin();
+  await requireAdmin();
   await deleteProduct(id);
   redirect("/admin");
 }

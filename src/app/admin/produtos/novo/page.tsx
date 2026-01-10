@@ -3,8 +3,8 @@ import { requireAdmin } from "@/lib/auth";
 import { TAG_LABELS } from "@/lib/constants";
 import { createProductAction } from "@/app/admin/actions";
 
-export default function NovoProdutoPage() {
-  requireAdmin();
+export default async function NovoProdutoPage() {
+  await requireAdmin();
 
   return (
     <div className="page">
