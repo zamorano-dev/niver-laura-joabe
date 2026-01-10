@@ -1,0 +1,80 @@
+[
+  {
+    "id": "seed-1",
+    "nome": "Mini cozinha sensorial da Laura",
+    "slug": "mini-cozinha-sensorial-da-laura",
+    "descricao": "Uma cozinha de brincar que incentiva autonomia e imaginação. Perfeita para a Laura explorar cores, texturas e criar receitas de faz de conta.",
+    "preco": 319.9,
+    "tagCrianca": "LAURA_LUDOVICA",
+    "imagens": [
+      "/images/produto-cozinha.svg"
+    ],
+    "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-LAURA-001",
+    "ativo": true
+  },
+  {
+    "id": "seed-2",
+    "nome": "Livro pop-up dos animais da floresta",
+    "slug": "livro-pop-up-dos-animais-da-floresta",
+    "descricao": "Um livro interativo com páginas que saltam e contam histórias. Ideal para a Laura se encantar com os animais e criar novas narrativas.",
+    "preco": 129.9,
+    "tagCrianca": "LAURA_LUDOVICA",
+    "imagens": [
+      "/images/produto-livros.svg"
+    ],
+    "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-LAURA-002",
+    "ativo": true
+  },
+  {
+    "id": "seed-3",
+    "nome": "Carrinho de empurrar do Joabe",
+    "slug": "carrinho-de-empurrar-do-joabe",
+    "descricao": "Carrinho resistente para os primeiros passos do Joabe. Ajuda no equilíbrio, coordenação e vira parceiro nas aventuras pela casa.",
+    "preco": 189.9,
+    "tagCrianca": "JOABE_LINCOLN",
+    "imagens": [
+      "/images/produto-carrinho.svg"
+    ],
+    "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-JOABE-001",
+    "ativo": true
+  },
+  {
+    "id": "seed-4",
+    "nome": "Blocos macios de montar",
+    "slug": "blocos-macios-de-montar",
+    "descricao": "Peças grandes e macias que o Joabe pode explorar com segurança. Estimulam coordenação motora e criatividade desde cedo.",
+    "preco": 249.9,
+    "tagCrianca": "JOABE_LINCOLN",
+    "imagens": [
+      "/images/produto-blocos.svg"
+    ],
+    "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-JOABE-002",
+    "ativo": true
+  },
+  {
+    "id": "seed-5",
+    "nome": "Casinha dobrável de leitura",
+    "slug": "casinha-dobravel-de-leitura",
+    "descricao": "Uma casinha de tecido que vira cantinho de leitura. Espaço perfeito para a Laura e o Joabe criarem memórias juntos.",
+    "preco": 299.9,
+    "tagCrianca": "COMPARTILHADO",
+    "imagens": [
+      "/images/produto-casinha.svg"
+    ],
+    "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-COMP-001",
+    "ativo": true
+  },
+  {
+    "id": "seed-6",
+    "nome": "Tapete musical interativo",
+    "slug": "tapete-musical-interativo",
+    "descricao": "Tapete com sons e luzes para brincar em família. Um presente compartilhado que faz a casa inteira entrar na festa.",
+    "preco": 379.9,
+    "tagCrianca": "COMPARTILHADO",
+    "imagens": [
+      "/images/produto-musical.svg"
+    ],
+    "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-COMP-002",
+    "ativo": true
+  }
+]

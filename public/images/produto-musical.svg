@@ -1,0 +1,15 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF3C4"/>
+      <stop offset="100%" stop-color="#FFF9E9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" rx="28" fill="url(#bg)"/>
+  <rect x="90" y="120" width="220" height="80" rx="20" fill="#1F8A8A"/>
+  <circle cx="140" cy="160" r="20" fill="#F06D4F"/>
+  <circle cx="200" cy="160" r="20" fill="#F5C46A"/>
+  <circle cx="260" cy="160" r="20" fill="#FFFFFF"/>
+  <path d="M280 80V130C280 145 268 157 252 157" stroke="#0F4C5C" stroke-width="6" stroke-linecap="round"/>
+  <text x="200" y="60" text-anchor="middle" fill="#1B2A3A" font-size="20" font-family="Arial" letter-spacing="2">TAPETE MUSICAL</text>
+</svg>
