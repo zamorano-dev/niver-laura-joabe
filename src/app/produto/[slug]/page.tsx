@@ -64,6 +64,13 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
                 ))}
               </div>
             </div>
+
+            <section>
+              <h2 className="section-title">Descrição do presente</h2>
+              <div className="description-card">
+                <p>{product.descricao}</p>
+              </div>
+            </section>
           </div>
 
           <aside className="product-details">
@@ -71,7 +78,6 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
               {TAG_LABELS[product.tagCrianca]}
             </span>
             <h1>{product.nome}</h1>
-            <p className="product-description">{product.descricao}</p>
             <div className="product-price">{formatPriceBRL(product.preco)}</div>
             <div className="callout">Parcelamento {formatParcelamento()}</div>
             <a className="btn" href={product.paymentLink}>
