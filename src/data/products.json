@@ -14,7 +14,7 @@
     ],
     "paymentLink": "https://mpago.la/1bzJzRa",
     "ativo": true,
-    "pago": false
+    "pago": true
   },
   {
     "id": "seed-1",
@@ -56,7 +56,7 @@
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-JOABE-001",
     "ativo": true,
-    "pago": false
+    "pago": true
   },
   {
     "id": "seed-4",

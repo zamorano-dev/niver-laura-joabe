@@ -146,6 +146,23 @@ export async function updateProductPaid(id: string, pago: boolean) {
   return products[index];
 }
 
+export async function updateProductPaidBySlug(slug: string, pago: boolean) {
+  const products = await readProducts();
+  const index = products.findIndex((product) => product.slug === slug);
+
+  if (index === -1) {
+    return null;
+  }
+
+  products[index] = {
+    ...products[index],
+    pago,
+  };
+
+  await writeProducts(products);
+  return products[index];
+}
+
 export function parseProductFormData(formData: FormData): ProductInput {
   const nome = String(formData.get("nome") || "").trim();
   const slug = String(formData.get("slug") || "").trim();
