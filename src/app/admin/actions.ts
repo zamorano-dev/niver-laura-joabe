@@ -13,6 +13,12 @@ import {
   requireAdmin,
   validateAdminCredentials,
 } from "@/lib/auth";
+import {
+  getChildPhotos,
+  saveChildPhoto,
+  saveChildPhotos,
+} from "@/lib/childPhotos";
+import { ProductTag } from "@/lib/types";
 
 export async function loginAction(formData: FormData) {
   const cpf = String(formData.get("cpf") || "");
@@ -53,4 +59,27 @@ export async function deleteProductAction(id: string) {
   await requireAdmin();
   await deleteProduct(id);
   redirect("/admin");
+}
+
+export async function updateChildPhotosAction(formData: FormData) {
+  await requireAdmin();
+
+  const current = await getChildPhotos();
+  const next = { ...current };
+
+  const fileEntries: Array<[ProductTag, string]> = [
+    ["LAURA_LUDOVICA", "fotoLaura"],
+    ["JOABE_LINCOLN", "fotoJoabe"],
+    ["COMPARTILHADO", "fotoCompartilhado"],
+  ];
+
+  for (const [tag, fieldName] of fileEntries) {
+    const file = formData.get(fieldName);
+    if (file instanceof File && file.size > 0) {
+      next[tag] = await saveChildPhoto(tag, file);
+    }
+  }
+
+  await saveChildPhotos(next);
+  redirect("/admin/fotos?saved=true");
 }

@@ -99,9 +99,14 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
               <h1>Painel admin</h1>
               <p className="helper">Gerencie os presentes exibidos na loja.</p>
             </div>
-            <Link className="btn" href="/admin/produtos/novo">
-              Novo presente
-            </Link>
+            <div className="form-actions">
+              <Link className="btn btn-secondary" href="/admin/fotos">
+                Fotos das criancas
+              </Link>
+              <Link className="btn" href="/admin/produtos/novo">
+                Novo presente
+              </Link>
+            </div>
           </div>
 
           <table className="table">

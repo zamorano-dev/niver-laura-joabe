@@ -422,6 +422,25 @@ p {
   box-shadow: var(--shadow);
 }
 
+.recipient-card {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  border: 1px solid rgba(16, 34, 53, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.recipient-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 18px;
+  object-fit: cover;
+  background: var(--surface-muted);
+}
+
 .callout {
   background: rgba(245, 196, 106, 0.2);
   border-radius: 14px;
@@ -520,6 +539,30 @@ p {
   margin-top: 12px;
 }
 
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.photo-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  border: 1px solid rgba(16, 34, 53, 0.08);
+  display: grid;
+  gap: 10px;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: var(--surface-muted);
+}
+
 .helper {
   font-size: 12px;
   color: var(--muted);
@@ -543,6 +586,11 @@ p {
 
   .hero {
     padding: 26px;
+  }
+
+  .recipient-card {
+    flex-direction: column;
+    text-align: center;
   }
 }
 

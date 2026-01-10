@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ImageCarousel } from "@/components/ImageCarousel";
-import { CHILD_GALLERY, TAG_LABELS } from "@/lib/constants";
+import { TAG_LABELS, TAG_RECIPIENT_COPY } from "@/lib/constants";
+import { getChildPhotos } from "@/lib/childPhotos";
 import { formatParcelamento, formatPriceBRL } from "@/lib/format";
 import { getProductBySlug } from "@/lib/products";
 
@@ -21,7 +22,8 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
     notFound();
   }
 
-  const childImages = CHILD_GALLERY[product.tagCrianca];
+  const childPhotos = await getChildPhotos();
+  const childPhoto = childPhotos[product.tagCrianca];
   const productImages = product.imagens.length
     ? product.imagens
     : ["/images/produto-casinha.svg"];
@@ -51,16 +53,17 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
               </div>
             </div>
 
-            <div>
-              <h2 className="section-title">Momentos da criança</h2>
-              <div className="gallery-grid">
-                {childImages.map((image) => (
-                  <div key={image} className="gallery-item">
-                    <img src={image} alt="Momento especial" width={240} height={200} />
-                  </div>
-                ))}
+            <section>
+              <h2 className="section-title">Quem vai receber este presente</h2>
+              <div className="recipient-card">
+                <img
+                  className="recipient-photo"
+                  src={childPhoto}
+                  alt={TAG_LABELS[product.tagCrianca]}
+                />
+                <p>{TAG_RECIPIENT_COPY[product.tagCrianca]}</p>
               </div>
-            </div>
+            </section>
 
             <section>
               <h2 className="section-title">Descrição do presente</h2>
