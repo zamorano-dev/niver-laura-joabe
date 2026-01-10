@@ -5,6 +5,7 @@ import {
   createProduct,
   deleteProduct,
   parseProductFormData,
+  updateProductPaid,
   updateProduct,
 } from "@/lib/products";
 import {
@@ -59,6 +60,12 @@ export async function deleteProductAction(id: string) {
   await requireAdmin();
   await deleteProduct(id);
   redirect("/admin");
+}
+
+export async function updatePaidStatusAction(id: string, pago: boolean) {
+  await requireAdmin();
+  await updateProductPaid(id, pago);
+  redirect(pago ? "/admin?tab=paid" : "/admin");
 }
 
 export async function updateChildPhotosAction(formData: FormData) {

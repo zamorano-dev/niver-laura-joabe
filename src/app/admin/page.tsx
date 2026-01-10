@@ -3,10 +3,15 @@ import { isAdminAuthenticated } from "@/lib/auth";
 import { TAG_LABELS } from "@/lib/constants";
 import { formatPriceBRL } from "@/lib/format";
 import { getProducts } from "@/lib/products";
-import { deleteProductAction, loginAction, logoutAction } from "./actions";
+import {
+  deleteProductAction,
+  loginAction,
+  logoutAction,
+  updatePaidStatusAction,
+} from "./actions";
 
 type AdminPageProps = {
-  searchParams?: Promise<{ error?: string }>;
+  searchParams?: Promise<{ error?: string; tab?: string }>;
 };
 
 export default async function AdminPage({ searchParams }: AdminPageProps) {
@@ -74,6 +79,10 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
   }
 
   const products = await getProducts();
+  const paidProducts = products.filter((product) => product.pago);
+  const pendingProducts = products.filter((product) => !product.pago);
+  const activeTab = resolvedSearchParams?.tab === "paid" ? "paid" : "open";
+  const visibleProducts = activeTab === "paid" ? paidProducts : pendingProducts;
 
   return (
     <div className="page">
@@ -109,6 +118,21 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
             </div>
           </div>
 
+          <div className="tab-list">
+            <Link
+              className={activeTab === "open" ? "tab tab-active" : "tab"}
+              href="/admin"
+            >
+              Pendentes ({pendingProducts.length})
+            </Link>
+            <Link
+              className={activeTab === "paid" ? "tab tab-active" : "tab"}
+              href="/admin?tab=paid"
+            >
+              Pagos ({paidProducts.length})
+            </Link>
+          </div>
+
           <table className="table">
             <thead>
               <tr>
@@ -116,16 +140,18 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
                 <th>Tag</th>
                 <th>Preço</th>
                 <th>Status</th>
+                <th>Pagamento</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {products.map((product) => (
+              {visibleProducts.map((product) => (
                 <tr key={product.id}>
                   <td>{product.nome}</td>
                   <td>{TAG_LABELS[product.tagCrianca]}</td>
                   <td>{formatPriceBRL(product.preco)}</td>
                   <td>{product.ativo ? "Ativo" : "Oculto"}</td>
+                  <td>{product.pago ? "Pago" : "Pendente"}</td>
                   <td>
                     <div className="form-actions">
                       <Link
@@ -134,6 +160,17 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
                       >
                         Editar
                       </Link>
+                      <form
+                        action={updatePaidStatusAction.bind(
+                          null,
+                          product.id,
+                          !product.pago
+                        )}
+                      >
+                        <button className="btn btn-secondary" type="submit">
+                          {product.pago ? "Desmarcar pago" : "Marcar como pago"}
+                        </button>
+                      </form>
                       <form action={deleteProductAction.bind(null, product.id)}>
                         <button className="btn" type="submit">
                           Remover

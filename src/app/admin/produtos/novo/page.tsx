@@ -81,6 +81,11 @@ export default async function NovoProdutoPage() {
               <input id="ativo" name="ativo" type="checkbox" defaultChecked />
             </div>
 
+            <div>
+              <label htmlFor="pago">Marcar como pago</label>
+              <input id="pago" name="pago" type="checkbox" />
+            </div>
+
             <div className="form-actions">
               <button className="btn" type="submit">
                 Salvar presente

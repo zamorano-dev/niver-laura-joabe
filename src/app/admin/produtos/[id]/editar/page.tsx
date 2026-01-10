@@ -129,6 +129,16 @@ export default async function EditarProdutoPage({
               />
             </div>
 
+            <div>
+              <label htmlFor="pago">Marcar como pago</label>
+              <input
+                id="pago"
+                name="pago"
+                type="checkbox"
+                defaultChecked={product.pago}
+              />
+            </div>
+
             <div className="form-actions">
               <button className="btn" type="submit">
                 Salvar alterações

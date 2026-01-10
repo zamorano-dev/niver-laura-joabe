@@ -13,7 +13,8 @@
       "https://m.media-amazon.com/images/I/81UBmyIPCtL._AC_SX679_.jpg"
     ],
     "paymentLink": "https://mpago.la/1bzJzRa",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   },
   {
     "id": "seed-1",
@@ -26,7 +27,8 @@
       "/images/produto-cozinha.svg"
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-LAURA-001",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   },
   {
     "id": "seed-2",
@@ -39,7 +41,8 @@
       "/images/produto-livros.svg"
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-LAURA-002",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   },
   {
     "id": "seed-3",
@@ -52,7 +55,8 @@
       "/images/produto-carrinho.svg"
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-JOABE-001",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   },
   {
     "id": "seed-4",
@@ -65,7 +69,8 @@
       "/images/produto-blocos.svg"
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-JOABE-002",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   },
   {
     "id": "seed-5",
@@ -78,7 +83,8 @@
       "/images/produto-casinha.svg"
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-COMP-001",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   },
   {
     "id": "seed-6",
@@ -91,6 +97,7 @@
       "/images/produto-musical.svg"
     ],
     "paymentLink": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=SEED-COMP-002",
-    "ativo": true
+    "ativo": true,
+    "pago": false
   }
 ]

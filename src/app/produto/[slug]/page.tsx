@@ -18,7 +18,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
 
-  if (!product || !product.ativo) {
+  if (!product || !product.ativo || product.pago) {
     notFound();
   }
 

@@ -10,4 +10,5 @@ export type Product = {
   imagens: string[];
   paymentLink: string;
   ativo: boolean;
+  pago: boolean;
 };

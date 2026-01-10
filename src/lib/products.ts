@@ -72,7 +72,7 @@ export async function getProducts() {
 
 export async function getActiveProducts() {
   const products = await readProducts();
-  return products.filter((product) => product.ativo);
+  return products.filter((product) => product.ativo && !product.pago);
 }
 
 export async function getProductBySlug(slug: string) {
@@ -129,6 +129,23 @@ export async function deleteProduct(id: string) {
   await writeProducts(next);
 }
 
+export async function updateProductPaid(id: string, pago: boolean) {
+  const products = await readProducts();
+  const index = products.findIndex((product) => product.id === id);
+
+  if (index === -1) {
+    return null;
+  }
+
+  products[index] = {
+    ...products[index],
+    pago,
+  };
+
+  await writeProducts(products);
+  return products[index];
+}
+
 export function parseProductFormData(formData: FormData): ProductInput {
   const nome = String(formData.get("nome") || "").trim();
   const slug = String(formData.get("slug") || "").trim();
@@ -138,6 +155,7 @@ export function parseProductFormData(formData: FormData): ProductInput {
   const imagensRaw = String(formData.get("imagens") || "");
   const paymentLink = String(formData.get("paymentLink") || "").trim();
   const ativo = formData.get("ativo") === "on";
+  const pago = formData.get("pago") === "on";
 
   return {
     nome,
@@ -148,5 +166,6 @@ export function parseProductFormData(formData: FormData): ProductInput {
     imagens: parseImages(imagensRaw),
     paymentLink,
     ativo,
+    pago,
   };
 }
