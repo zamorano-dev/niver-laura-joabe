@@ -39,26 +39,6 @@ Cada produto possui um `paymentLink` fixo no Mercado Pago. Configure o link para
 
 A aplicação não processa pagamento, apenas simula a experiência.
 
-## Webhook de pagamento (opcional)
-
-Se quiser marcar automaticamente um presente como pago, use o webhook abaixo:
-
-```
-POST /api/webhook/mercadopago
-Headers:
-  x-webhook-secret: <WEBHOOK_SECRET>
-Body (JSON):
-  { "productId": "...", "status": "approved" }
-  { "slug": "...", "paid": true }
-```
-
-Você também pode enviar via query string para testes:
-
-```
-/api/webhook/mercadopago?productId=...&paid=true
-```
-
-Defina `WEBHOOK_SECRET` no `.env.local` para exigir autenticação do webhook.
 
 ## Produtos
 

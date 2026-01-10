@@ -14,7 +14,7 @@
     ],
     "paymentLink": "https://mpago.la/1bzJzRa",
     "ativo": true,
-    "pago": true
+    "pago": false
   },
   {
     "id": "seed-1",
