@@ -45,3 +45,4 @@ A aplicação apenas exibe presentes com parcelamentos inclusos e redireciona pa
 Os produtos são armazenados em `src/data/products.json`. O painel admin grava diretamente nesse arquivo.
 
 > Em deploy serverless (Vercel), escrita em arquivo pode não persistir. Para uso real, conecte um banco.
+# niver-laura-joabe
