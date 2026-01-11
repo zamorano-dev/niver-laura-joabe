@@ -30,13 +30,12 @@ export default async function Home() {
           </h1>
           <p>
             Um marketplace de presentes pensado para reunir carinho, tecnologia
-            e a história da nossa família. Escolha um presente, finalize no
-            Mercado Pago e volte para a nossa festa.
+            e a história da nossa família. Escolha um presente e veja as
+            condições de pagamento.
           </p>
           <div className="hero-meta">
             <span className="hero-chip">Loja de presentes oficial</span>
-            <span>Parcelamento informativo</span>
-            <span>Pagamento externo via Mercado Pago</span>
+            <span>Pagamento online seguro</span>
           </div>
         </section>
 

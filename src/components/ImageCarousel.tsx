@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 
 type ImageCarouselProps = {
   images: string[];
@@ -24,6 +24,10 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
 
   const goNext = () => goTo(index + 1);
   const goPrev = () => goTo(index - 1);
+  const stopLink = (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
 
   return (
     <div
@@ -47,7 +51,10 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
           <button
             className="carousel-btn carousel-btn-prev"
             type="button"
-            onClick={goPrev}
+            onClick={(event) => {
+              stopLink(event);
+              goPrev();
+            }}
             aria-label="Imagem anterior"
           >
             ‹
@@ -55,7 +62,10 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
           <button
             className="carousel-btn carousel-btn-next"
             type="button"
-            onClick={goNext}
+            onClick={(event) => {
+              stopLink(event);
+              goNext();
+            }}
             aria-label="Proxima imagem"
           >
             ›
@@ -70,7 +80,10 @@ export function ImageCarousel({ images, alt, className }: ImageCarouselProps) {
                     : "carousel-dot"
                 }
                 type="button"
-                onClick={() => goTo(dotIndex)}
+                onClick={(event) => {
+                  stopLink(event);
+                  goTo(dotIndex);
+                }}
                 aria-label={`Ir para imagem ${dotIndex + 1}`}
                 aria-selected={dotIndex === index}
                 role="tab"

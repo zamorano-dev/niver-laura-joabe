@@ -69,7 +69,7 @@ export default async function NovoProdutoPage() {
             </div>
 
             <div>
-              <label htmlFor="paymentLink">Link do Mercado Pago</label>
+              <label htmlFor="paymentLink">Link externo do presente</label>
               <input id="paymentLink" name="paymentLink" type="url" required />
               <p className="helper">
                 Configure o link para retornar a /confirmacao?paid=true.
@@ -82,7 +82,7 @@ export default async function NovoProdutoPage() {
             </div>
 
             <div>
-              <label htmlFor="pago">Marcar como pago</label>
+              <label htmlFor="pago">Marcar como confirmado</label>
               <input id="pago" name="pago" type="checkbox" />
             </div>
 

@@ -129,7 +129,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
               className={activeTab === "paid" ? "tab tab-active" : "tab"}
               href="/admin?tab=paid"
             >
-              Pagos ({paidProducts.length})
+              Confirmados ({paidProducts.length})
             </Link>
           </div>
 
@@ -140,7 +140,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
                 <th>Tag</th>
                 <th>Preço</th>
                 <th>Status</th>
-                <th>Pagamento</th>
+                <th>Confirmação</th>
                 <th></th>
               </tr>
             </thead>
@@ -151,7 +151,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
                   <td>{TAG_LABELS[product.tagCrianca]}</td>
                   <td>{formatPriceBRL(product.preco)}</td>
                   <td>{product.ativo ? "Ativo" : "Oculto"}</td>
-                  <td>{product.pago ? "Pago" : "Pendente"}</td>
+                  <td>{product.pago ? "Confirmado" : "Pendente"}</td>
                   <td>
                     <div className="form-actions">
                       <Link
@@ -168,7 +168,9 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
                         )}
                       >
                         <button className="btn btn-secondary" type="submit">
-                          {product.pago ? "Desmarcar pago" : "Marcar como pago"}
+                          {product.pago
+                            ? "Desfazer confirmacao"
+                            : "Marcar como confirmado"}
                         </button>
                       </form>
                       <form action={deleteProductAction.bind(null, product.id)}>

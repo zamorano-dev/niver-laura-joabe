@@ -1,6 +1,6 @@
 # Loja do Aniversário — Laura Ludovica & Joabe Lincoln
 
-Marketplace de presentes de aniversário infantil com experiência estilo Amazon/Mercado Livre, compra redirecionada ao Mercado Pago e painel admin simples.
+Marketplace de presentes de aniversário infantil com experiência estilo Amazon/Mercado Livre, parcelamentos inclusos e painel admin simples.
 
 ## Requisitos
 
@@ -29,15 +29,15 @@ Acesse:
 - Loja: http://localhost:3000
 - Admin: http://localhost:3000/admin
 
-## Mercado Pago
+## Links externos
 
-Cada produto possui um `paymentLink` fixo no Mercado Pago. Configure o link para retornar para:
+Cada produto possui um `paymentLink` fixo para um link externo. Configure o link para retornar para:
 
 ```
 /confirmacao?paid=true
 ```
 
-A aplicação não processa pagamento, apenas simula a experiência.
+A aplicação apenas exibe presentes com parcelamentos inclusos e redireciona para um link externo.
 
 
 ## Produtos

@@ -33,7 +33,7 @@ export default async function ConfirmacaoPage({
               <span className="badge" data-tag="COMPARTILHADO">
                 {TAG_LABELS.COMPARTILHADO}
               </span>
-              <h1>Compra confirmada</h1>
+              <h1>Presente confirmado</h1>
               <p>
                 🎉 Obrigado por presentear Laura Ludovica (4 anos) e/ou Joabe
                 Lincoln (1 ano). Seu carinho faz parte desse momento especial da
@@ -42,10 +42,10 @@ export default async function ConfirmacaoPage({
             </>
           ) : (
             <>
-              <h1>Pagamento não confirmado</h1>
+              <h1>Confirmação não encontrada</h1>
               <p>
-                Ainda não recebemos a confirmação do pagamento. Se você concluiu
-                no Mercado Pago, aguarde alguns minutos e tente novamente.
+                Ainda não identificamos a confirmação do presente. Se você
+                acabou de finalizar, aguarde alguns minutos e tente novamente.
               </p>
             </>
           )}
