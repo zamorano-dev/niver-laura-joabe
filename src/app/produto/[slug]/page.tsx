@@ -46,14 +46,14 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
 
         <div className="product-layout">
           <div className="gallery">
-            <div>
+            <section className="product-photos">
               <h2 className="section-title">Fotos do produto</h2>
               <div className="gallery-item">
                 <ImageCarousel images={productImages} alt={product.nome} />
               </div>
-            </div>
+            </section>
 
-            <section>
+            <section className="product-recipient">
               <h2 className="section-title">Quem vai receber este presente</h2>
               <div className="recipient-card">
                 <img
@@ -65,7 +65,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
               </div>
             </section>
 
-            <section>
+            <section className="product-description">
               <h2 className="section-title">Descrição do presente</h2>
               <div className="description-card">
                 <p>{product.descricao}</p>
@@ -73,16 +73,20 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
             </section>
           </div>
 
-          <aside className="product-details">
-            <span className="badge" data-tag={product.tagCrianca}>
-              {TAG_LABELS[product.tagCrianca]}
-            </span>
-            <h1>{product.nome}</h1>
-            <div className="product-price">{formatPriceBRL(product.preco)}</div>
-            <div className="callout">Parcelamento disponível</div>
-            <a className="btn" href={product.paymentLink}>
-              Comprar este presente
-            </a>
+          <aside className="product-side">
+            <div className="product-title">
+              <span className="badge" data-tag={product.tagCrianca}>
+                {TAG_LABELS[product.tagCrianca]}
+              </span>
+              <h1>{product.nome}</h1>
+            </div>
+            <div className="product-details">
+              <div className="product-price">{formatPriceBRL(product.preco)}</div>
+              <div className="callout">Parcelamento disponível</div>
+              <a className="btn" href={product.paymentLink}>
+                Comprar este presente
+              </a>
+            </div>
           </aside>
         </div>
       </div>
