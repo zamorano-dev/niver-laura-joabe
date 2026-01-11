@@ -32,8 +32,8 @@ export default async function FotosPage({ searchParams }: FotosPageProps) {
         <div className="admin-shell">
           <h1>Fotos das criancas</h1>
           <p className="helper">
-            Envie uma foto para cada situacao. Os arquivos sao salvos em
-            /public/uploads/child. Prefira JPG/PNG com ate 10 MB. HEIC pode nao
+            Envie uma foto para cada situacao. Os arquivos ficam na pasta de
+            uploads do projeto. Prefira JPG/PNG com ate 10 MB. HEIC pode nao
             aparecer em alguns navegadores.
           </p>
           {saved ? <p className="helper">Fotos atualizadas com sucesso.</p> : null}

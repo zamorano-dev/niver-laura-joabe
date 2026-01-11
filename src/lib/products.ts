@@ -1,12 +1,9 @@
-import { promises as fs } from "fs";
-import path from "path";
 import crypto from "crypto";
 import { Product, ProductTag } from "./types";
 import { toSlug } from "./slug";
+import { readJsonFile, writeJsonFile } from "./storage";
 
 export type ProductInput = Omit<Product, "id">;
-
-const dataFile = path.join(process.cwd(), "src", "data", "products.json");
 const validTags: ProductTag[] = [
   "LAURA_LUDOVICA",
   "JOABE_LINCOLN",
@@ -50,20 +47,12 @@ function ensureUniqueSlug(
 }
 
 async function readProducts() {
-  try {
-    const raw = await fs.readFile(dataFile, "utf8");
-    const data = JSON.parse(raw);
-    return Array.isArray(data) ? (data as Product[]) : [];
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return [];
-    }
-    throw error;
-  }
+  const data = await readJsonFile<Product[]>("products.json", []);
+  return Array.isArray(data) ? data : [];
 }
 
 async function writeProducts(products: Product[]) {
-  await fs.writeFile(dataFile, `${JSON.stringify(products, null, 2)}\n`, "utf8");
+  await writeJsonFile("products.json", products);
 }
 
 export async function getProducts() {

@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import crypto from "crypto";
+import { ensureUploadsSubdir, getUploadPublicUrl, readJsonFile, writeJsonFile } from "./storage";
 
 export type BannerData = {
   title: string;
@@ -9,8 +10,6 @@ export type BannerData = {
   enabled: boolean;
 };
 
-const dataFile = path.join(process.cwd(), "src", "data", "banner.json");
-const uploadDir = path.join(process.cwd(), "public", "uploads", "banner");
 const allowedExtensions = new Set([".jpg", ".jpeg", ".png", ".webp"]);
 
 const defaultBanner: BannerData = {
@@ -22,23 +21,18 @@ const defaultBanner: BannerData = {
 };
 
 export async function getBanner(): Promise<BannerData> {
-  try {
-    const raw = await fs.readFile(dataFile, "utf8");
-    const data = JSON.parse(raw) as Partial<BannerData>;
-    return {
-      ...defaultBanner,
-      ...data,
-    } as BannerData;
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return defaultBanner;
-    }
-    throw error;
-  }
+  const data = await readJsonFile<Partial<BannerData>>(
+    "banner.json",
+    defaultBanner
+  );
+  return {
+    ...defaultBanner,
+    ...data,
+  } as BannerData;
 }
 
 export async function saveBanner(data: BannerData) {
-  await fs.writeFile(dataFile, `${JSON.stringify(data, null, 2)}\n`, "utf8");
+  await writeJsonFile("banner.json", data);
 }
 
 export async function saveBannerImage(file: File) {
@@ -48,8 +42,8 @@ export async function saveBannerImage(file: File) {
   const ext = allowedExtensions.has(extRaw) ? extRaw : ".jpg";
   const fileName = `banner-${Date.now()}-${crypto.randomUUID().slice(0, 8)}${ext}`;
 
-  await fs.mkdir(uploadDir, { recursive: true });
+  const uploadDir = await ensureUploadsSubdir("banner");
   await fs.writeFile(path.join(uploadDir, fileName), buffer);
 
-  return `/uploads/banner/${fileName}`;
+  return getUploadPublicUrl("banner", fileName);
 }
