@@ -46,3 +46,4 @@ Os produtos são armazenados em `src/data/products.json`. O painel admin grava d
 
 > Em deploy serverless (Vercel), escrita em arquivo pode não persistir. Para uso real, conecte um banco.
 # niver-laura-joabe
+# niver-laura-joabe
