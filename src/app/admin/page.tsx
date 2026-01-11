@@ -112,6 +112,9 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
               <Link className="btn btn-secondary" href="/admin/fotos">
                 Fotos das criancas
               </Link>
+              <Link className="btn btn-secondary" href="/admin/banner">
+                Banner da loja
+              </Link>
               <Link className="btn" href="/admin/produtos/novo">
                 Novo presente
               </Link>

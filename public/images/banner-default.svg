@@ -1,0 +1,19 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFE9D6"/>
+      <stop offset="55%" stop-color="#EAF2FF"/>
+      <stop offset="100%" stop-color="#F7F2EC"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1200 160) rotate(145) scale(560 380)">
+      <stop offset="0%" stop-color="#F06D4F" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#F06D4F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" rx="48" fill="url(#bg)"/>
+  <rect width="1600" height="900" rx="48" fill="url(#glow)"/>
+  <circle cx="420" cy="420" r="210" fill="#F06D4F" opacity="0.9"/>
+  <circle cx="820" cy="420" r="210" fill="#1F8A8A" opacity="0.85"/>
+  <circle cx="1220" cy="420" r="210" fill="#F5C46A" opacity="0.9"/>
+  <text x="800" y="720" text-anchor="middle" fill="#152B3E" font-size="56" font-family="Arial" letter-spacing="6">LAURA &amp; JOABE</text>
+</svg>

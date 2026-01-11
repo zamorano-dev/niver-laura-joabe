@@ -82,7 +82,7 @@ export default async function ProdutoPage({ params }: ProdutoPageProps) {
             </div>
             <div className="product-details">
               <div className="product-price">{formatPriceBRL(product.preco)}</div>
-              <div className="callout">Parcelamento disponível</div>
+              <div className="callout">Parcelamento {formatParcelamento()}</div>
               <a className="btn" href={product.paymentLink}>
                 Comprar este presente
               </a>

@@ -1,12 +1,18 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { getActiveProducts } from "@/lib/products";
 import { TAG_LABELS } from "@/lib/constants";
+import { getBanner } from "@/lib/banner";
 import { formatParcelamento, formatPriceBRL } from "@/lib/format";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const products = await getActiveProducts();
+  const banner = await getBanner();
 
   return (
     <div className="page">
@@ -31,13 +37,27 @@ export default async function Home() {
           <p>
             Um marketplace de presentes pensado para reunir carinho, tecnologia
             e a história da nossa família. Escolha um presente e veja as
-            condições de pagamento.
+            condições de parcelamento já inclusas.
           </p>
           <div className="hero-meta">
             <span className="hero-chip">Loja de presentes oficial</span>
-            <span>Pagamento online seguro</span>
+            <span>Parcelamento incluso no valor</span>
           </div>
         </section>
+
+        {banner.enabled ? (
+          <section className="banner">
+            <div className="banner-media">
+              <img src={banner.image} alt={banner.title} />
+              <div className="banner-overlay" />
+              <div className="banner-content">
+                <span className="banner-chip">Especial para a familia</span>
+                <h2>{banner.title}</h2>
+                <p>{banner.subtitle}</p>
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <h2 className="section-title">Escolha um presente</h2>
         <div className="product-grid">

@@ -20,6 +20,7 @@ import {
   saveChildPhotos,
 } from "@/lib/childPhotos";
 import { ProductTag } from "@/lib/types";
+import { getBanner, saveBanner, saveBannerImage } from "@/lib/banner";
 
 export async function loginAction(formData: FormData) {
   const cpf = String(formData.get("cpf") || "");
@@ -89,4 +90,28 @@ export async function updateChildPhotosAction(formData: FormData) {
 
   await saveChildPhotos(next);
   redirect("/admin/fotos?saved=true");
+}
+
+export async function updateBannerAction(formData: FormData) {
+  await requireAdmin();
+
+  const current = await getBanner();
+  const title = String(formData.get("title") || "");
+  const subtitle = String(formData.get("subtitle") || "");
+  const enabled = formData.get("enabled") === "on";
+
+  const file = formData.get("image");
+  const image =
+    file instanceof File && file.size > 0
+      ? await saveBannerImage(file)
+      : current.image;
+
+  await saveBanner({
+    title,
+    subtitle,
+    image,
+    enabled,
+  });
+
+  redirect("/admin/banner?saved=true");
 }
