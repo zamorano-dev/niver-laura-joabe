@@ -1,7 +1,8 @@
 import { promises as fs } from "fs";
 import path from "path";
 import crypto from "crypto";
-import { ensureUploadsSubdir, getUploadPublicUrl, readJsonFile, writeJsonFile } from "./storage";
+import { ensureUploadsSubdir, getUploadPublicUrl } from "./storage";
+import { getStorageGateway } from "./gateways/storageGateway";
 
 export type BannerData = {
   title: string;
@@ -21,8 +22,9 @@ const defaultBanner: BannerData = {
 };
 
 export async function getBanner(): Promise<BannerData> {
-  const data = await readJsonFile<Partial<BannerData>>(
-    "banner.json",
+  const storage = await getStorageGateway();
+  const data = await storage.readJson<Partial<BannerData>>(
+    "banner",
     defaultBanner
   );
   return {
@@ -32,7 +34,8 @@ export async function getBanner(): Promise<BannerData> {
 }
 
 export async function saveBanner(data: BannerData) {
-  await writeJsonFile("banner.json", data);
+  const storage = await getStorageGateway();
+  await storage.writeJson("banner", data);
 }
 
 export async function saveBannerImage(file: File) {

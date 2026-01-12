@@ -3,12 +3,8 @@ import path from "path";
 import crypto from "crypto";
 import { DEFAULT_CHILD_PHOTOS } from "./constants";
 import { ProductTag } from "./types";
-import {
-  ensureUploadsSubdir,
-  getUploadPublicUrl,
-  readJsonFile,
-  writeJsonFile,
-} from "./storage";
+import { ensureUploadsSubdir, getUploadPublicUrl } from "./storage";
+import { getStorageGateway } from "./gateways/storageGateway";
 
 export type ChildPhotoMap = Record<ProductTag, string>;
 
@@ -22,8 +18,9 @@ const allowedExtensions = new Set([
 ]);
 
 export async function getChildPhotos(): Promise<ChildPhotoMap> {
-  const data = await readJsonFile<Partial<ChildPhotoMap>>(
-    "child-photos.json",
+  const storage = await getStorageGateway();
+  const data = await storage.readJson<Partial<ChildPhotoMap>>(
+    "child-photos",
     DEFAULT_CHILD_PHOTOS
   );
   return {
@@ -35,7 +32,8 @@ export async function getChildPhotos(): Promise<ChildPhotoMap> {
 }
 
 export async function saveChildPhotos(photos: ChildPhotoMap) {
-  await writeJsonFile("child-photos.json", photos);
+  const storage = await getStorageGateway();
+  await storage.writeJson("child-photos", photos);
 }
 
 export async function saveChildPhoto(tag: ProductTag, file: File) {

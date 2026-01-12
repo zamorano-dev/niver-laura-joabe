@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import { Product, ProductTag } from "./types";
 import { toSlug } from "./slug";
-import { readJsonFile, writeJsonFile } from "./storage";
+import { getStorageGateway } from "./gateways/storageGateway";
 
 export type ProductInput = Omit<Product, "id">;
 const validTags: ProductTag[] = [
@@ -47,12 +47,14 @@ function ensureUniqueSlug(
 }
 
 async function readProducts() {
-  const data = await readJsonFile<Product[]>("products.json", []);
+  const storage = await getStorageGateway();
+  const data = await storage.readJson<Product[]>("products", []);
   return Array.isArray(data) ? data : [];
 }
 
 async function writeProducts(products: Product[]) {
-  await writeJsonFile("products.json", products);
+  const storage = await getStorageGateway();
+  await storage.writeJson("products", products);
 }
 
 export async function getProducts() {

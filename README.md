@@ -15,6 +15,12 @@ Crie um arquivo `.env.local` na raiz com:
 ADMIN_CPF=00000000000
 ADMIN_PASSWORD=suasenha
 SESSION_SECRET=uma-chave-opcional
+# Preferencial: Vercel Redis
+REDIS_URL=
+# Opcional: Vercel KV para persistencia em producao
+KV_REST_API_URL=
+KV_REST_API_TOKEN=
+STORAGE_NAMESPACE=niver-j-l
 ```
 
 ## Rodar local
@@ -42,8 +48,6 @@ A aplicação apenas exibe presentes com parcelamentos inclusos e redireciona pa
 
 ## Produtos
 
-Os produtos são armazenados em `src/data/products.json`. O painel admin grava diretamente nesse arquivo.
-
-> Em deploy serverless (Vercel), escrita em arquivo pode não persistir. Para uso real, conecte um banco.
+Localmente os produtos sao armazenados em `src/data/products.json`. Em producao, se `REDIS_URL` estiver configurado, os dados sao gravados no Vercel Redis. Caso contrario, se `KV_REST_API_URL` e `KV_REST_API_TOKEN` estiverem configurados, os dados vao para o Vercel KV.
 # niver-laura-joabe
 # niver-laura-joabe
