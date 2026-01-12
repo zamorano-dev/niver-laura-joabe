@@ -1,4 +1,3 @@
-import type { RedisClientType } from "redis";
 import { readJsonFile, writeJsonFile } from "@/lib/storage";
 
 type JsonValue = null | boolean | number | string | JsonValue[] | { [key: string]: JsonValue };
@@ -12,8 +11,16 @@ const DEFAULT_NAMESPACE = "niver-j-l";
 const namespace = process.env.STORAGE_NAMESPACE || DEFAULT_NAMESPACE;
 
 let cachedGateway: StorageGateway | null = null;
-let redisClient: RedisClientType | null = null;
-let redisReady: Promise<RedisClientType> | null = null;
+type RedisClient = {
+  connect: () => Promise<unknown>;
+  disconnect: () => Promise<unknown>;
+  get: (key: string) => Promise<string | null>;
+  set: (key: string, value: string) => Promise<unknown>;
+  on: (event: "error", listener: (error: unknown) => void) => void;
+};
+
+let redisClient: RedisClient | null = null;
+let redisReady: Promise<RedisClient> | null = null;
 
 function buildKey(key: string) {
   return `${namespace}:${key}`;
@@ -39,8 +46,8 @@ async function getRedisClient() {
         console.error("Redis connection error:", error);
       });
       await client.connect();
-      redisClient = client;
-      return client;
+      redisClient = client as unknown as RedisClient;
+      return redisClient;
     })();
   }
 
