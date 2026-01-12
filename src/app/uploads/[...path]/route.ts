@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { getUploadsDir } from "@/lib/storage";
 
 export const runtime = "nodejs";
@@ -16,13 +16,17 @@ const MIME_TYPES: Record<string, string> = {
 };
 
 type UploadRouteContext = {
-  params: {
+  params: Promise<{
     path: string[];
-  };
+  }>;
 };
 
-export async function GET(_request: Request, { params }: UploadRouteContext) {
-  const segments = params.path ?? [];
+export async function GET(
+  _request: NextRequest,
+  { params }: UploadRouteContext
+) {
+  const resolvedParams = await params;
+  const segments = resolvedParams.path ?? [];
   const baseDir = getUploadsDir();
   const resolvedPath = path.resolve(baseDir, ...segments);
 
