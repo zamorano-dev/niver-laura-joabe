@@ -10,9 +10,30 @@ import { formatParcelamento, formatPriceBRL } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
+type HomePageProps = {
+  searchParams?: Promise<{ shop?: string }>;
+};
+
+export default async function Home({ searchParams }: HomePageProps) {
   const products = await getActiveProducts();
   const banner = await getBanner();
+  const resolvedSearchParams = await searchParams;
+  const shop = resolvedSearchParams?.shop;
+
+  const filteredProducts =
+    shop === "laura"
+      ? products.filter(
+          (product) =>
+            product.tagCrianca === "LAURA_LUDOVICA" ||
+            product.tagCrianca === "COMPARTILHADO"
+        )
+      : shop === "joabe"
+        ? products.filter(
+            (product) =>
+              product.tagCrianca === "JOABE_LINCOLN" ||
+              product.tagCrianca === "COMPARTILHADO"
+          )
+        : products;
 
   return (
     <div className="page">
@@ -59,9 +80,47 @@ export default async function Home() {
           </section>
         ) : null}
 
+        <section className="shop-divider">
+          <div className="shop-divider-card">
+            <div>
+              <span className="shop-divider-chip">Escolha por loja</span>
+              <h2>Loja da Laura ou loja do Joabe?</h2>
+              <p>
+                Navegue pelos presentes pensados para cada crianca. Presentes
+                compartilhados aparecem nas duas lojas.
+              </p>
+            </div>
+            <div className="shop-divider-actions">
+              <Link
+                className={
+                  shop === "laura"
+                    ? "btn btn-secondary is-active"
+                    : "btn btn-secondary"
+                }
+                href="/?shop=laura"
+              >
+                Loja da Laurinha
+              </Link>
+              <Link
+                className={
+                  shop === "joabe"
+                    ? "btn btn-secondary is-active"
+                    : "btn btn-secondary"
+                }
+                href="/?shop=joabe"
+              >
+                Loja do Joabe
+              </Link>
+              <Link className="btn" href="/">
+                Ver todos
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <h2 className="section-title">Escolha um presente</h2>
         <div className="product-grid">
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => (
             <Link
               key={product.id}
               href={`/produto/${product.slug}`}
